@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MITS BikeHub - Confirm Booking</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Center content and style the confirm booking section */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f4f0;
+        }
+
+        .confirm-booking-section {
+            background-color: #e2f7e2;
+            border-radius: 10px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .confirm-booking-section form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Popup styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #e2f7e2;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .popup p {
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .popup button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .popup button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            padding: 10px 0;
+            width: 100%;
+            background-color: #e2f7e2;
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Confirm Booking Section -->
+    <section class="confirm-booking-section">
+        <h1>Confirm Your Booking</h1>
+        <p>You are booking <strong id="selected-bicycle">Bicycle Name</strong></p>
+
+        <form id="confirmation-form" onsubmit="showConfirmation(event)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="college-id">College ID:</label>
+            <input type="text" id="college-id" name="college-id" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="email">Email ID:</label>
+            <input type="email" id="email" name="email" required>
+
+            <button type="submit">Confirm Booking</button>
+        </form>
+    </section>
+
+    <!-- Popup Message -->
+    <div class="popup" id="confirmation-popup">
+        <h2>Booking Confirmed!</h2>
+        <p id="confirmation-details"></p>
+        <button onclick="returnToHome()">Back to Home</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 MITS BikeHub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Populate bicycle name from previous page
+        document.getElementById('selected-bicycle').textContent = localStorage.getItem("selectedBicycle");
+
+        function showConfirmation(event) {
+            event.preventDefault();
+
+            const bicycleName = localStorage.getItem("selectedBicycle");
+            const currentTime = new Date().toLocaleTimeString();
+
+            const confirmationDetails = `You have successfully booked <strong>${bicycleName}</strong> at <strong>${currentTime}</strong>.`;
+            document.getElementById('confirmation-details').innerHTML = confirmationDetails;
+
+            // Show the popup
+            document.getElementById('confirmation-popup').style.display = 'block';
+        }
+
+        function returnToHome() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

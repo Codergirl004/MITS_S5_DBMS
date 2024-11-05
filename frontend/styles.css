@@ -1,0 +1,256 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #0d0d0d;
+}
+
+h1, h2 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Navigation Bar */
+nav ul {
+    background-color: #a5d6a7;
+    padding: 30px;
+    list-style: none;
+    text-align: center;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Correct shadow effect */
+    font-size: 2.5rem;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    background: url('yourgif.gif') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-overlay {
+    background: rgba(57, 56, 56, 0.3);
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.hero-section h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 6px rgb(33, 32, 32); /* Hero heading shadow */
+}
+
+.hero-section p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Hero paragraph shadow */
+}
+
+.cta-button {
+    background-color: #77dd77;
+    padding: 15px 30px;
+    color: white;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #6bcf6b;
+}
+
+/* About Section */
+.about-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #e8f5e9;
+}
+
+.about-section p {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* User Experience Section */
+.experience-section {
+    background-color: #e8f5e9;
+    padding: 80px 20px; /* Increased padding */
+}
+
+.experience-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem; /* Larger heading */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Experience section heading shadow */
+}
+
+.experience-cards {
+    display: flex;
+    justify-content: center;
+    gap: 50px; /* Increased gap between cards */
+}
+
+.experience-card {
+    background-color: #c8e6c9;
+    border-radius: 15px; /* More rounded corners */
+    padding: 30px; /* Increased padding inside the cards */
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Larger shadow for a pop effect */
+    max-width: 350px; /* Larger width for the cards */
+    transition: transform 0.3s ease;
+}
+
+.experience-card:hover {
+    transform: scale(1.08); /* Larger hover effect */
+}
+
+.experience-card img {
+    width: 250px; /* Larger image size */
+    height: 250px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 80px 20px; /* Increased padding */
+    background-color: #e8f5e9;
+}
+
+.faq-section h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem; /* Larger heading */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* FAQ section heading shadow */
+}
+
+.faq-item {
+    max-width: 1000px; /* Increased width for FAQ items */
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.faq-question {
+    background-color: #77dd77;
+    color: white;
+    padding: 20px; /* Bigger padding for FAQ question buttons */
+    width: 100%;
+    text-align: left;
+    font-size: 1.5rem; /* Larger font size for FAQ question */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #c8e6c9;
+}
+
+.faq-answer {
+    padding: 20px; /* Bigger padding for FAQ answer */
+    font-size: 1.3rem; /* Larger font size for FAQ answer */
+    background-color: #f9f9f9;
+    display: none;
+    text-align: left;
+}
+
+/* Footer */
+footer {
+    background-color: #c8e6c9;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Transition for FAQ */
+.faq-answer.open {
+    display: block;
+}
+
+/* Availability Section */
+.availability-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    background-color: #e8f5e9;
+    padding: 40px;
+}
+
+.form-container {
+    background-color: #a5d6a7;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: white; /* Changed to white */
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Text shadow for form heading */
+}
+
+label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input[type="date"],
+select {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #43da43;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #6bcf6b;
+}
+
+/* styles.css */
+.availability-section h1 {
+    color: black;
+}
+
+<h1 style="color: black;">Select Pick-up Date and Time Slot</h1>
