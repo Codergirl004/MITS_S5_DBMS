@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MITS BikeHub{% endblock %}</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #4CAF50;
+        }
+        nav button {
+            background-color: #fff;
+            color: #4CAF50;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Global Navbar -->
+    <nav>
+        <button onclick="location.href='/bicycle-selection'">Dashboard</button>
+        <button onclick="location.href='/view-bookings'">View Bookings</button>
+        <button onclick="location.href='/bicycle-selection'">Bicycle Selection</button>
+    </nav>
+
+    <!-- Content from other templates -->
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 MITS BikeHub. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MITS BikeHub - Select Date & Time</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav style="background-color: #4CAF50; padding: 10px; display: flex; justify-content: space-around;">
+        <a href="/" style="color: white; text-decoration: none; font-size: 18px;">Home</a>
+        <a href="/bicycle-selection" style="color: white; text-decoration: none; font-size: 18px;">Available Selection</a>
+        <a href="/view-bookings" style="color: white; text-decoration: none; font-size: 18px;">View bookings</a>
+        <a href="/confirm-booking" style="color: white; text-decoration: none; font-size: 18px;">Confirm Booking</a>
+    </nav>
+   
+
+    <!-- Select Date and Time Section -->
+    <section id="availability" class="availability-section">
+        <div class="form-container">
+            <h1>Select Pick-up Date and Time Slot</h1>
+
+            <form id="availability-form" action="bicycle-selection.html" method="GET">
+                <!-- Pick-up Date -->
+                <label for="pickup-date">Pick-up Date:</label>
+                <input type="date" id="pickup-date" name="pickup-date" required>
+    
+                <!-- Start Time -->
+                <label for="start-time">Start Time:</label>
+                <select id="start-time" name="start-time" required>
+                    <option value="8am">8 AM</option>
+                    <option value="9am">9 AM</option>
+                    <option value="10am">10 AM</option>
+                    <option value="11am">11 AM</option>
+                    <option value="12pm">12 PM</option>
+                    <option value="1pm">1 PM</option>
+                    <option value="2pm">2 PM</option>
+                    <option value="3pm">3 PM</option>
+                    <option value="4pm">4 PM</option>
+                    <option value="5pm">5 PM</option>
+                    <option value="6pm">6 PM</option>
+                    <option value="7pm">7 PM</option>
+                    <option value="8pm">8 PM</option>
+                    <option value="9pm">9 PM</option>
+                    <option value="10pm">10 PM</option>
+                    <option value="11pm">11 PM</option>
+                </select>
+    
+                <!-- End Time -->
+                <label for="end-time">End Time:</label>
+                <select id="end-time" name="end-time" required>
+                    <option value="9am">9 AM</option>
+                    <option value="10am">10 AM</option>
+                    <option value="11am">11 AM</option>
+                    <option value="12pm">12 PM</option>
+                    <option value="1pm">1 PM</option>
+                    <option value="2pm">2 PM</option>
+                    <option value="3pm">3 PM</option>
+                    <option value="4pm">4 PM</option>
+                    <option value="5pm">5 PM</option>
+                    <option value="6pm">6 PM</option>
+                    <option value="7pm">7 PM</option>
+                    <option value="8pm">8 PM</option>
+                    <option value="9pm">9 PM</option>
+                    <option value="10pm">10 PM</option>
+                    <option value="11pm">11 PM</option>
+                </select>
+    
+                <button type="submit">Check Availability</button>
+            </form>
+        </section>
+    
+        <footer>
+            <p>&copy; 2024 MITS BikeHub. All rights reserved.</p>
+        </footer>
+    
+        <script>
+            document.getElementById('availability-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+        
+                // Get form data
+                const pickupDate = document.getElementById('pickup-date').value;
+                const startTime = document.getElementById('start-time').value;
+                const endTime = document.getElementById('end-time').value;
+        
+                // Create a booking object to store
+                const booking = {
+                    pickupDate: pickupDate,
+                    startTime: startTime,
+                    endTime: endTime
+                };
+        
+                // Get the bookings array from localStorage, or initialize it if empty
+                let bookings = JSON.parse(localStorage.getItem('bookings'));
+        
+                // If there's no bookings in localStorage, initialize an empty array
+                if (!Array.isArray(bookings)) {
+                    bookings = [];
+                }
+        
+                // Check the number of bookings for the selected pickupDate
+                const existingBookingCount = bookings.filter(booking => booking.pickupDate === pickupDate).length;
+        
+                // If there's already a booking for this date, show an alert
+                if (existingBookingCount >= 10) {
+                    alert("Too many bookings right now for this date!");
+                    return;
+                }
+        
+                // Add the new booking to the array
+                bookings.push(booking);
+        
+                // Save the updated bookings array back to localStorage
+                localStorage.setItem('bookings', JSON.stringify(bookings));
+        
+                // Redirect to the /bicycle-selection page with query params
+                window.location.href = '/bicycle-selection?' + new URLSearchParams({
+                    'pickup-date': pickupDate,
+                    'start-time': startTime,
+                    'end-time': endTime
+                }).toString();
+            });
+        </script>
+        
+        
+    </body>
+    </html>

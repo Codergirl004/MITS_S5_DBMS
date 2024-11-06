@@ -6,7 +6,6 @@
     <title>MITS BikeHub - Available Bicycles</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Additional inline CSS for quick layout adjustments */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -15,7 +14,7 @@
             display: flex;
             justify-content: space-between;
             padding: 10px;
-            background-color: #a8e6cf; /* Slight green background for navigation */
+            background-color: #a8e6cf;
         }
         nav button {
             background-color: #4CAF50;
@@ -25,16 +24,10 @@
             cursor: pointer;
             font-size: 16px;
         }
-        nav button:hover {
-            background-color: #45a049;
-        }
         .bicycles-section {
             text-align: center;
             padding: 20px;
-            background-color: #d8f3dc; /* Slight green background for section */
-        }
-        .bicycles-section h1 {
-            color: black; /* Set heading color to black */
+            background-color: #d8f3dc;
         }
         .bicycle-grid {
             display: grid;
@@ -48,7 +41,6 @@
             padding: 15px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             transition: 0.3s;
-            position: relative;
         }
         .bicycle-card:hover {
             box-shadow: 0 8px 16px rgba(0,0,0,0.3);
@@ -69,59 +61,39 @@
             font-size: 14px;
             border-radius: 5px;
         }
-        .bicycle-card button:hover {
-            background-color: #45a049;
-        }
         footer {
             text-align: center;
             padding: 10px;
             background-color: #333;
             color: white;
         }
-    </style>
+        </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav>
-        <button onclick="location.href='index.html'">Dashboard</button>
-        <button onclick="location.href='availability.html'">Change Slot</button>
+    <nav style="background-color: #4CAF50; padding: 10px; display: flex; justify-content: space-around;">
+        <a href="/" style="color: white; text-decoration: none; font-size: 18px;">Home</a>
+        <a href="/bicycle-selection" style="color: white; text-decoration: none; font-size: 18px;">Available Selection</a>
+        <a href="/view-bookings" style="color: white; text-decoration: none; font-size: 18px;">View bookings</a>
+        <a href="/confirm-booking" style="color: white; text-decoration: none; font-size: 18px;">Confirm Booking</a>
     </nav>
+   
 
-    <!-- Available Bicycles Section -->
     <section class="bicycles-section">
         <h1>Available Bicycles</h1>
         <div class="bicycle-grid">
-            <!-- Bicycle Cards -->
             <div class="bicycle-card">
-                <img src="b11.png" alt="Bicycle 101">
+                <img src="/static/images/b33.png" alt="Bicycle 101">
                 <h3>Bicycle 101</h3>
                 <p>Type: Mountain Bike</p>
                 <p>Gear: Yes</p>
                 <button onclick="confirmBooking('Bicycle 101')">Confirm Booking</button>
             </div>
-
             <div class="bicycle-card">
-                <img src="b33.png" alt="Bicycle 102">
+                <img src="/static/images/b22.png" alt="Bicycle 102">
                 <h3>Bicycle 102</h3>
                 <p>Type: Road Bike</p>
                 <p>Gear: No</p>
                 <button onclick="confirmBooking('Bicycle 102')">Confirm Booking</button>
-            </div>
-
-            <div class="bicycle-card">
-                <img src="b22.png" alt="Bicycle 103">
-                <h3>Bicycle 103</h3>
-                <p>Type: Hybrid Bike</p>
-                <p>Gear: Yes</p>
-                <button onclick="confirmBooking('Bicycle 103')">Confirm Booking</button>
-            </div>
-
-            <div class="bicycle-card">
-                <img src="b44.png" alt="Bicycle 104">
-                <h3>Bicycle 104</h3>
-                <p>Type: Electric Bike</p>
-                <p>Gear: No</p>
-                <button onclick="confirmBooking('Bicycle 104')">Confirm Booking</button>
             </div>
         </div>
     </section>
@@ -132,8 +104,11 @@
 
     <script>
         function confirmBooking(bicycleName) {
-            localStorage.setItem("selectedBicycle", bicycleName);
-            window.location.href = 'confirm-booking.html';
+            // Store the bicycle name in localStorage
+            localStorage.setItem('selectedBicycle', bicycleName);
+
+            // Redirect to the confirm booking page
+            window.location.href = 'confirm-booking';
         }
     </script>
 </body>

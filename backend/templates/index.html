@@ -4,15 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MITS BikeHub - Welcome</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
+<script>document.addEventListener('DOMContentLoaded', function() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            answer.classList.toggle('open');
+        });
+    });
+});
+</script>
 <body>
+    <nav style="background-color: #4CAF50; padding: 10px; display: flex; justify-content: space-around;">
+        <a href="/" style="color: white; text-decoration: none; font-size: 18px;">Home</a>
+        <a href="/bicycle-selection" style="color: white; text-decoration: none; font-size: 18px;">Available Selection</a>
+        <a href="/view-bookings" style="color: white; text-decoration: none; font-size: 18px;">View bookings</a>
+        <a href="/confirm-booking" style="color: white; text-decoration: none; font-size: 18px;">Confirm Booking</a>
+    </nav>
+    
     <!-- Hero Section with GIF Background -->
-    <section class="hero-section">
+    <section class="hero-section" style="background: url('{{ url_for('static', filename='images/yourgif.gif') }}') no-repeat center center/cover;">
         <div class="hero-overlay">
             <h1>Welcome to MITS BikeHub</h1>
             <p>Rent a bicycle and explore the campus with ease.</p>
-            <a href="availability.html" class="cta-button">Get Started</a>
+            <a href="{{ url_for('availability') }}" class="cta-button">Get Started</a>
         </div>
     </section>
 
@@ -27,15 +45,15 @@
         <h2>User Experiences</h2>
         <div class="experience-cards">
             <div class="experience-card">
-                <img src="user 1.jpg" alt="User 1">
+                <img src="{{ url_for('static', filename='images/user 1.jpg')}}" alt="User 1">
                 <p>"Smooth and hassle-free booking process. Highly recommended!"</p>
             </div>
             <div class="experience-card">
-                <img src="user 2.jpg" alt="User 2">
+                <img src="{{ url_for('static', filename='images/user 2.jpg')}}" alt="User 2">
                 <p>"The bicycles are well-maintained and the service is great!"</p>
             </div>
             <div class="experience-card">
-                <img src="user 3.jpg" alt="User 3">
+                <img src="{{ url_for('static', filename='images/user 3.jpg')}}" alt="User 3">
                 <p>"I loved exploring the campus with the bikes. It’s super convenient!"</p>
             </div>
         </div>
